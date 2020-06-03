@@ -14,8 +14,7 @@ class Timer:
 
     @property
     def time_elapsed(self):
-        assert not self.stop_time
-        return time.time() - self.start_time
+        return round((time.time() - self.start_time), 2)
 
     def __enter__(self):
         self.start()

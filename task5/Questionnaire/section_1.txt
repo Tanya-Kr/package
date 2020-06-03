@@ -1,2 +1,2 @@
 What is your name:
-How old are you:
+Where do you live:

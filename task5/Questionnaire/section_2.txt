@@ -1,2 +1,2 @@
-Where do you live:
-Do you have a cat or dog:
+Do you have a cat:
+Do you have a dog:
