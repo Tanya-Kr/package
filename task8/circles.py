@@ -58,7 +58,7 @@ class Circles:
         for identifier, color in new_colors.items():
             this = self.find(identifier)
             this.change_color(color)
-            # print(this)
+            print(this)
 
     def find(self, identifier: int) -> Circle:
         for this in self._circles:
