@@ -1,40 +1,37 @@
-import os
-
-
 def main():
-    total_file_statistic(get_file_data(get_file_name()))
+    flag = True
+    while flag:
+        file_data = get_file_data(get_file_name())
+        statistic = total_file_statistic(file_data)
+
+        for key, value in statistic.items():
+            print(f"{key:<20} {value}")
+
+        flag = input("Do you want make another statistic file (yes / no): ").lower() == "yes"
 
 
-def total_file_statistic(tuple_file_data):
-    static_text = []
-    static_text.append("File: " + os.path.abspath('run2019.txt'))
-    static_text.append("total lines:      " + str(len([line.strip() for line in tuple_file_data])))
-    static_text.append("empty lines:      " + str(len([line for line in tuple_file_data if not line.strip()])))
-    static_text.append("lines with 'z':   " + str(len([line for line in tuple_file_data if line.find("z") != -1])))
-    static_text.append("'z' count:       " + str((' '.join(tuple_file_data)).count("z")))
-    static_text.append("lines with \'and\': " + str(len([line for line in tuple_file_data if line.find("and") != -1])))
-    print('\n'.join(static_text))
-    continue_or_close_program()
+def get_file_name() -> str:
+    """:return File path"""
+    return str(input("Enter file name: "))
 
 
-def get_file_data(file_path):
+def total_file_statistic(tuple_file_data: tuple) -> dict:
+    """Return statistical info about the number of: total lines, empty lines, lines with 'z',
+    'z' letters in the file, lines with 'and'."""
+    static_text = {"total lines:": len([line.strip() for line in tuple_file_data]),
+                   "empty lines:": len([line for line in tuple_file_data if not line.strip()]),
+                   "lines with 'z':": len([line for line in tuple_file_data if line.find("z") != -1]),
+                   "'z' count:": (' '.join(tuple_file_data)).count("z"),
+                   "lines with 'and':": str(len([line for line in tuple_file_data if line.find("and") != -1]))}
+    return static_text
+
+
+def get_file_data(file_path: str) -> tuple:
+    """Convert data from file into tuple."""
     file_data = open(file_path)
     tuple_file_data = tuple(file_data)
     file_data.close()
     return tuple_file_data
-
-
-def get_file_name():
-    return str(input("Enter file name: "))
-
-
-def continue_or_close_program():
-    print("Do you want make another file statistic (yes / no)")
-    user_answer = input()
-    if user_answer == "yes":
-        total_file_statistic(get_file_data(get_file_name()))
-    else:
-        print("Thanks for using our program")
 
 
 if __name__ == '__main__':
