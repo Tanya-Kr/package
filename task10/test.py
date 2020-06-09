@@ -64,7 +64,7 @@ class SubtractTest(TestCase):
 
 def suite_one_arg_less_zero():
     suite = unittest.TestSuite()
-    # suite.addTest(AddTest.test_one_arg_less_zero)
+    suite.addTest(AddTest.test_one_arg_less_zero)
     suite.addTest(SubtractTest.test_one_arg_less_zero)
     return suite
 
@@ -72,12 +72,10 @@ def suite_one_arg_less_zero():
 def suite_all_args_more_zero():
     suite = unittest.TestSuite()
     suite.addTest(AddTest.test_all_args_more_zero)
-    # suite.addTest(SubtractTest.test_all_args_more_zero)
+    suite.addTest(SubtractTest.test_all_args_more_zero)
     return suite
 
 
 if __name__ == '__main__':
     unittest.TextTestRunner().run(suite_one_arg_less_zero())
     unittest.TextTestRunner().run(suite_all_args_more_zero())
-    runner = unittest.TextTestRunner()
-    runner.run(suite_one_arg_less_zero())
